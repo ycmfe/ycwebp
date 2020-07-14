@@ -8,9 +8,9 @@ function ObjectToShell(obj){
     let param = [];
     for(let key in obj){
         if(typeof obj[key] === 'boolean' && obj[key]){
-            param.push(`--${key}`);
+            param.push(`-${key}`);
         } else {
-            param.push(`--${key} ${obj[key]}`);
+            param.push(`-${key} ${obj[key]}`);
         }
     }
     return param.join(' ');
