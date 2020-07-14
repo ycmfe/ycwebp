@@ -1,0 +1,12 @@
+{
+  "name": "ycwebp",
+  "version": "1.0.0",
+  "description": "洋葱WebP图片生成工具",
+  "main": "index.js",
+  "author": "liuqing",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^7.1.6",
+    "shelljs": "^0.8.4"
+  }
+}
