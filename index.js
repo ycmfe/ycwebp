@@ -30,20 +30,17 @@ function inputToOutFile(input){
 const errList = [];
 
 function execPromise(cwebpParams, files, cb){
-    console.log('=====', files);
     if(!files.length){
         cb();
         return;
     }
     let _f = files.pop();
-    console.log('====222=', _f);
     if(/\.webp/i.test(_f) === true){
         return execPromise(cwebpParams, files, cb);
     };
     const f = fileFormart(_f);
     const outfile = inputToOutFile(f);
     shelljs.exec(`${__dirname}/cwebp-${platform} ${cwebpParams} ${f} -o ${outfile}`, (code, stdout, stderr) => {
-        console.log('execPromise', files);
         execPromise(cwebpParams, files, cb);
         if(stderr){
             errList.push(stderr);
@@ -57,7 +54,6 @@ function loop(files, cwebpParams, cb){
     }
     let f = files.pop();
     execPromise(cwebpParams, f, function(err, ret){
-        console.log('loop', files);
         loop(files, cwebpParams, cb)
     });
 }
@@ -81,7 +77,6 @@ module.exports = function(options = {}){
             }
             const loopFiles = arrTrans(files, options.processNumber || 100);
             function callback(){
-                console.log(222, errList);
                 if(errList.length){
                     reject(errList);
                     return;
