@@ -15,6 +15,7 @@ webp({
     path, // 图片路径请参考glob的格式
     fileOption, // glob对应的图片配置，默认为空
     compressOption // cwebp的配置
+    processNumber: 100 //配置单词处理的进程数,默认为100
 }).then(() => {
     cb();
 })
